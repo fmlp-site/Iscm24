@@ -1,33 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro e Login</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login e Cadastro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-container" id="register-form">
-            <h2>Cadastro</h2>
-            <input type="email" id="register-email" placeholder="Email">
-            <input type="password" id="register-password" placeholder="Senha">
-            <button onclick="register()">Cadastrar</button>
-        </div>
-
-        <div class="form-container" id="login-form">
-            <h2>Login</h2>
-            <input type="email" id="login-email" placeholder="Email">
-            <input type="password" id="login-password" placeholder="Senha">
-            <button onclick="login()">Login</button>
-        </div>
-
-        <p id="message"></p>
+  <div class="container">
+    <!-- Formulário de Login -->
+    <div class="form-container" id="login-container">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Senha" required>
+      <button id="login-btn">Login</button>
+      <p>Não tem conta? <a href="#" id="switch-to-signup">Cadastre-se aqui</a></p>
     </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>
-    <script src="app.js"></script>
+    <!-- Formulário de Cadastro -->
+    <div class="form-container" id="signup-container" style="display:none;">
+      <h2>Cadastro</h2>
+      <input type="email" id="signup-email" placeholder="Email" required>
+      <input type="password" id="signup-password" placeholder="Senha" required>
+      <button id="signup-btn">Cadastrar</button>
+      <p>Já tem conta? <a href="#" id="switch-to-login">Faça login aqui</a></p>
+    </div>
+
+    <!-- Mensagem de erro ou sucesso -->
+    <div id="message"></div>
+  </div>
+
+  <!-- Firebase SDKs via CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js"></script>
+
+  <script>
+    // Configurações do Firebase (substitua com as suas credenciais)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCFBQkHuz5vqgCubfCkdv-cmwHXoJoTjVU",
+      authDomain: "logincadastroapp.firebaseapp.com",
+      projectId: "logincadastroapp",
+      storageBucket: "logincadastroapp.appspot.com",
+      messagingSenderId: "130534153517",
+      appId: "1:130534153517:web:726402b0bfb2b08bc5c7a4"
+    };
+
+    // Inicializando Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+
+  <script src="app.js"></script>
 </body>
-      </html>
+</html>
